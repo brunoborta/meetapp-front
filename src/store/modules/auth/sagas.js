@@ -7,7 +7,7 @@ import history from '~/services/history';
 import { signFailure, signInSuccess } from './actions';
 
 export function* signUp({ payload }) {
-  const toastId = toast.default('Criando sua conta. Aguarde...', {
+  const toastId = toast('Criando sua conta. Aguarde...', {
     autoClose: false,
   });
   try {
