@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import SignInLayout from '../pages/_layouts/SignIn';
 import LoggedLayout from '../pages/_layouts/Logged';
 
-import store from '~/store';
+import { store } from '~/store';
 
 function RouteWrapper({ component: Component, isPrivate, ...rest }) {
   const { signed } = store.getState().auth;
