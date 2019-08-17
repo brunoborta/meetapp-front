@@ -2,10 +2,10 @@ import React from 'react';
 
 // import { Container } from './styles';
 
-export default function Main() {
+export default function Details() {
   return (
     <div>
-      <h1>Main</h1>
+      <h1>Details</h1>
     </div>
   );
 }
