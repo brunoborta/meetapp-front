@@ -16,6 +16,18 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.email = email;
         break;
       }
+      case '@auth/SIGN_OUT': {
+        draft.id = null;
+        draft.name = null;
+        draft.email = null;
+        break;
+      }
+      case '@user/UPDATE_PROFILE_SUCCESS': {
+        const { name, email } = action.payload.user;
+        draft.name = name;
+        draft.email = email;
+        break;
+      }
       default:
     }
   });

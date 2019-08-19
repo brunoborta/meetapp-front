@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container, Content } from './styles';
+import Header from '~/components/Header';
+
+import { Container } from './styles';
 
 function Logged({ children }) {
   return (
     <Container>
-      <Content>{children}</Content>
+      <Header />
+      {children}
     </Container>
   );
 }

@@ -44,6 +44,10 @@ export function* signIn({ payload }) {
       password,
     });
     const { token, user } = response.data;
+
+    // Adiciona o token nos headers de todas as chamadas
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+
     yield put(signInSuccess(token, user));
     history.push('/dashboard');
   } catch (err) {
@@ -54,7 +58,24 @@ export function* signIn({ payload }) {
   }
 }
 
+export function setToken({ payload }) {
+  if (!payload) return;
+
+  const { token } = payload.auth;
+
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${payload.auth.token}`;
+  }
+}
+
+export function signOut() {
+  history.push('/');
+  toast.info('Obrigado por utilizar o Meetapps!');
+}
+
 export default all([
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
+  takeLatest('persist/REHYDRATE', setToken),
+  takeLatest('@auth/SIGN_OUT', signOut),
 ]);

@@ -23,9 +23,9 @@ function RouteWrapper({ component: Component, isPrivate, ...rest }) {
   return (
     <Route
       {...rest}
-      render={() => (
+      render={props => (
         <Layout>
-          <Component />
+          <Component {...props} />
         </Layout>
       )}
     />
