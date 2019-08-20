@@ -16,10 +16,11 @@ ButtonWrapper.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
     .isRequired,
   color: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 ButtonWrapper.defaultProps = {
   color: '#f94d6a',
+  onClick: () => {},
 };
 export default ButtonWrapper;

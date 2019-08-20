@@ -8,6 +8,7 @@ import { Container, Content, Header, Meetup } from './styles';
 import Button from '~/components/Button';
 
 import api from '~/services/api';
+import history from '~/services/history';
 
 export default function Dashboard() {
   const [meetups, setMeetups] = useState([]);
@@ -34,7 +35,7 @@ export default function Dashboard() {
       <Content>
         <Header>
           <h1>Dashboard</h1>
-          <Button type="button">
+          <Button type="button" onClick={() => history.push('/meetup/create')}>
             <div>
               <FaPlus color="#fff" />
               Novo Meetup

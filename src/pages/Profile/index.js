@@ -69,8 +69,10 @@ export default function Profile() {
             placeholder="Confirmação de senha"
           />
           <Button type="submit">
-            <FaPlusCircle color="#fff" />
-            Salvar Perfil
+            <div>
+              <FaPlusCircle color="#fff" />
+              Salvar Perfil
+            </div>
           </Button>
         </Form>
       </Content>
