@@ -51,6 +51,18 @@ function Details({ match }) {
     loadMeetup();
   }, [meetup.date, meetup.formattedDate, meetupId]);
 
+  async function cancelMeetup() {
+    try {
+      await api.delete(`/meetups/${meetupId}`);
+
+      toast.success('Meetup cancelada com sucesso!');
+
+      history.push('/dashboard');
+    } catch (err) {
+      toast.error(err.message);
+    }
+  }
+
   return (
     <Container>
       {loading ? (
@@ -62,26 +74,26 @@ function Details({ match }) {
           <Header>
             <h1>{meetup.name}</h1>
             <Actions>
-              <Button type="button" color="#4DBAF9">
-                <div>
+              <Button
+                type="button"
+                color="#4DBAF9"
+                onClick={() => history.push(`/meetup/${meetupId}`)}
+              >
+                <>
                   <FaEdit color="#fff" />
                   Editar
-                </div>
+                </>
               </Button>
-              <Button type="button">
-                <div>
+              <Button type="button" onClick={cancelMeetup}>
+                <>
                   <FaTimes color="#fff" />
                   Cancelar
-                </div>
+                </>
               </Button>
             </Actions>
           </Header>
           <Main>
-            <img
-              // src="https://blog.snappa.com/wp-content/uploads/2019/02/Twitch-offline-banner-size.jpg"
-              src={meetup.banner.url}
-              alt=""
-            />
+            <img src={meetup.banner.url} alt="" />
             <p>{meetup.description}</p>
             <Informations>
               <div>

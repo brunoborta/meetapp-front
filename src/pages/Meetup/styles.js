@@ -17,6 +17,17 @@ export const Content = styled.div`
   form {
     display: flex;
     flex-direction: column;
+
+    img {
+      width: 100%;
+      background: #999;
+      transition: opacity 0.5s;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
     input,
     textarea {
       width: 100%;
@@ -28,8 +39,12 @@ export const Content = styled.div`
       margin-bottom: 10px;
     }
 
-    textarea {
+    /* textarea {
       resize: none;
+      height: 150px;
+    } */
+
+    input.textarea {
       height: 150px;
     }
 

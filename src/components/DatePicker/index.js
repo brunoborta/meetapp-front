@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
+import { parseISO } from 'date-fns';
 import PropTypes from 'prop-types';
 import pt from 'date-fns/locale/pt';
 import { useField } from '@rocketseat/unform';
@@ -21,6 +22,12 @@ function DatePicker({ name, placeholder }) {
       },
     });
   }, [ref.current, fieldName]); // eslint-disable-line
+
+  useEffect(() => {
+    if (defaultValue) {
+      setSelected(parseISO(defaultValue));
+    }
+  }, [defaultValue]);
 
   return (
     <>

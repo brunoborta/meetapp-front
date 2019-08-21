@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 
 import Route from './Route';
 
@@ -19,7 +19,13 @@ export default function Routes() {
       <Route path="/profile" component={Profile} isPrivate />
       <Route path="/details/:meetupId" exact component={Details} isPrivate />
       <Route path="/meetup/create" exact component={Meetup} isPrivate />
-      <Route path="/meetup/:meetupId" exact component={Meetup} isPrivate />
+      <Route
+        path="/meetup/:meetupId"
+        component={props => <Meetup {...props} title="Editar Meetup" />}
+        exact
+        isPrivate
+      />
+      <Redirect exact to="/" />
     </Switch>
   );
 }

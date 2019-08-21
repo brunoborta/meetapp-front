@@ -21,7 +21,14 @@ export default function BannerInput() {
         path: 'dataset.file',
       });
     }
-  }, [ref, registerField]);
+  }, [ref.current]); //eslint-disable-line
+
+  useEffect(() => {
+    if (defaultValue) {
+      setFile(defaultValue.id);
+      setPreview(defaultValue.url);
+    }
+  }, [defaultValue]);
 
   async function handleChange(e) {
     const data = new FormData();
@@ -35,6 +42,7 @@ export default function BannerInput() {
     setFile(id);
     setPreview(url);
   }
+
   return (
     <Container>
       <label htmlFor="banner">
